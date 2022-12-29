@@ -88,14 +88,33 @@ button:hover{
 }
 
 
+.content {
+    margin-top: 15px;
+}
 
+table {
+    border-collapse: collapse;
+    border: 1px solid gray;
+    width: 100%;
+}
 
+table th {
+    background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+}
 
+table th, td {    
+    padding: 1px 5px;
+    text-align: left;
+}
 
+table td img {
+    width: 22px;
+    
+}
 
-
-
-
+.center {
+    text-align: center;
+}
 
 
 
