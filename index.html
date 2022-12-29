@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <!-- <main>
+        <div id="container">
+            <h1 class="logo">Virtual Marketing</h1>
+            <ul class="ul">
+                <li>Uva Crimson</li>
+                <li>Vinho Canção</li>
+                <li>Água de Coco</li>
+                <li>Mamão</li>
+                <li>Água Tônica</li>
+
+            </ul>
+        </div>
+    </main> -->
+
+    <header>
+        <h1>Carrinho de Compras</h1>
+    </header>
+
+    <main>
+        <div class="title">
+            <h2>Produtos</h2>
+            <span>Lista de produtos da minha loja.</span>
+        </div>
+
+        <div class="card">
+            <div class="lineInput">
+                <label>Produto</label>
+                <input type="text" id="produto" placeholder="Nome do produto">
+            </div>
+            
+            <div class="lineInput">
+                <label>Valor</label>
+                <input type="text" id="valor" placeholder="Valor do produto">
+            </div>
+            <button onclick="produto.adicionar()">Adicionar</button>
+            <button onclick="produto.excluir()">Deletar</button>
+        </div>
+
+        <div class="content">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Ações</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mesa de Sala</td>
+                        <td>R$1.000,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </main>
+
+</body>
+<script src="script/script.js"></script>
+
+</html>
+
