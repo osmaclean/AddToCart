@@ -6,15 +6,21 @@ class Produto {
     constructor() {
         this.id = 1;
         this.arrayProdutos = [];
+        this.editId = null;
     }
 
     salvar() {
         let produto = this.lerDados();
 
         if (this.validaCampos(produto)) {
-            this.adicionar(produto);
-
+            if (this.editId == null) {
+                this.adicionar(produto);
+            } else {
+                this.atualizar(this.editId, produto);
+            }
         }
+
+
         this.listaTabela();
         this.cancelar();
 
@@ -43,16 +49,18 @@ class Produto {
 
             let imgEdit = document.createElement("img");
             imgEdit.src = "style/editar.png";
+            imgEdit.setAttribute("onclick", "produto.preparaEditacao(" + JSON.stringify(this.arrayProdutos[i]) + ")");
+
 
 
             let imgExcluir = document.createElement("img");
             imgExcluir.src = "style/excluir.png";
-            imgExcluir.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id + ")");
+            imgExcluir.setAttribute("onclick", "produto.deletar(" + this.arrayProdutos[i].id + ")");
 
             td_acoes.appendChild(imgEdit);
             td_acoes.appendChild(imgExcluir);
 
-            console.log(this.arrayProdutos)
+            console.log(this.arrayProdutos);
 
         }
 
@@ -61,8 +69,31 @@ class Produto {
 
     // Função criada para adicionar o elemento no Array sendo chamado na função salvar
     adicionar(produto) {
+        produto.preco = parseFloat(produto.preco);
         this.arrayProdutos.push(produto);
         this.id++;
+
+    }
+
+    // Método criado para atualizar o produto e retornar na tabela limpando o anterior e sobrepondo com o novo dado.
+    atualizar(id, produto){
+        for (let i = 0; i < this.arrayProdutos.length; i++) {
+            if(this.arrayProdutos[i].id == id){
+                this.arrayProdutos[i].nomeProduto = produto.nomeProduto;
+                this.arrayProdutos[i].preco = produto.preco;
+            }
+        }
+
+    }
+
+    // Função criada para editar os dados do produto via imagem e retornar no input para edição dos dados
+    preparaEditacao(dados) {
+        this.editId = dados.id;
+
+        document.getElementById("produto").value = dados.nomeProduto;
+        document.getElementById("preco").value = dados.preco;
+
+        document.getElementById("btn1").innerText = "Atualizar";
 
     }
 
@@ -109,21 +140,28 @@ class Produto {
         document.getElementById("produto").value = "";
         document.getElementById("preco").value = "";
 
+        document.getElementById("btn1").innerText = "Salvar";
+        this.editId = null;
+
     }
 
     //Método criado para dar funcionalidade a imagem de deletar/excluir.
     deletar(id) {
 
-        let tbody = document.getElementById("tbody");
+        if (confirm("Deseja realmente deletar o produto do ID " + id)) {
 
-        for (let i = 0; i < this.arrayProdutos.length; i++) {
-            if (this.arrayProdutos[i].id == id){
-                this.arrayProdutos.splice(i, 1); // Acessa o indice da tabela e exclui apenas 1
-                tbody.deleteRow(i); // Atualiza a tabela de forma dinâmica
+            let tbody = document.getElementById("tbody");
+
+            for (let i = 0; i < this.arrayProdutos.length; i++) {
+                if (this.arrayProdutos[i].id == id) {
+                    this.arrayProdutos.splice(i, 1); // Acessa o indice da tabela e exclui apenas 1
+                    tbody.deleteRow(i); // Atualiza a tabela de forma dinâmica
+                }
+
             }
-
+            console.log(this.arrayProdutos)
         }
-        console.log(this.arrayProdutos)
+
     }
 
 }
