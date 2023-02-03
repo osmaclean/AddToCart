@@ -56,6 +56,12 @@
 
 <hr>
 
+## Link do Deploy (Vercel)
+
+https://add-to-cart-gamma.vercel.app/
+
+<hr>
+
 # IDE Utilizada
 
 <div> 
