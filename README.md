@@ -56,7 +56,7 @@
 
 <hr>
 
-## Link do Deploy (Vercel)
+## Link de Acesso ao Projeto (Vercel)
 
 https://add-to-cart-gamma.vercel.app/
 
